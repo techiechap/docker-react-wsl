@@ -8,3 +8,17 @@ before_install:
 
 script:
   - docker run ashishdhawal/docker-react-wsl npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: docker-react-wsl 
+  env: DockerReactWsl-env
+  bucket_name: "elasticbeanstalk-us-east-2-171912905752"
+  bucker_path: docker-react-wsl
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
