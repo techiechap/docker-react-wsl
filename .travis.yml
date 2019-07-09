@@ -3,5 +3,8 @@ services:
   - docker
 
 
-  before_install:
+before_install:
     - docker build -t ashishdhawal/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run ashishdhawal/docker-react-wsl npm run test -- --coverage
